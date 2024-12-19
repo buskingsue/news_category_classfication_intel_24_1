@@ -7,7 +7,7 @@ import datetime
 category = ['Politics', 'Economic', 'Social', 'Culture', 'World', 'IT']
 df_titles = pd.DataFrame()
 
-for i in range(6):
+for i in range(2):
     url = 'https://news.naver.com/section/10{}'.format(i)
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text, 'html.parser')
