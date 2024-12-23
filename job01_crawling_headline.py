@@ -7,7 +7,7 @@ import datetime
 category = ['Politics', 'Economic', 'Social', 'Culture', 'World', 'IT']
 df_titles = pd.DataFrame()
 
-for i in range(2):
+for i in range(6):
     url = 'https://news.naver.com/section/10{}'.format(i)
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text, 'html.parser')
@@ -15,7 +15,7 @@ for i in range(2):
     titles = []
     for title_tag in title_tags:
         title = title_tag.text
-        title = re.compile('[^가-힣 ]').sub('', title)
+        title = re.compile('[^가-힣 ]').sub(' ', title)
         titles.append(title)
     df_section_titles = pd.DataFrame(titles, columns=['titles'])
     df_section_titles['category'] = category[i]
